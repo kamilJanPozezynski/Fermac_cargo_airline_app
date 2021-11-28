@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-5 text-center">
+    <h2>Add new airline</h2>
+  </div>
+  <div class="row mt-5">
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+      <div class="form-group mt-2">
+        <label for="airlineName">Airline name</label>
+        <select formControlName="airlineName" class="form-control" id="airlineName">
+          <option *ngFor="let airlineName of airlinesNames">
+            {{ airlineName }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group mt-2">
+        <label for="transportType">Transport type</label>
+        <select formControlName="transportType" class="form-control" id="transportType">
+          <option>load</option>
+          <option>passenger</option>
+        </select>
+      </div>
+      <div class="form-group mt-2">
+        <label for="DestinationCountry">Destination country</label>
+        <select formControlName="DestinationCountry" class="form-control" id="DestinationCountry">
+          <option *ngFor="let DestinationCountry of countries">
+            {{ DestinationCountry }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group text-center">
+        <button [disabled]="submitedCorrectly" type="submit" class="btn btn-primary mt-5">
+          Add new airline
+        </button>
+      </div>
+      <div *ngIf="submitedCorrectly" class="alert alert-success mt-5" role="alert">
+        New airline added!
+      </div>
+    </form>
+  </div>
+</div>
